@@ -38,7 +38,7 @@ export default function Home() {
           value={input}
         />
         <button
-          class="btn btn-dark"
+          className="btn btn-dark"
           onClick={() => {
             if (input > 0) genUsers(input);
             else alert("Invalid number of user");
@@ -48,7 +48,7 @@ export default function Home() {
         </button>
       </div>
 
-      {/* UserCard */}
+      {/* Real UserCard */}
       {users.map((user) => (
         <UserCard person={user} key={user.name.last} />
       ))}
@@ -60,7 +60,7 @@ export default function Home() {
           <img
             src="/profile-placeholder.jpeg"
             width="90px"
-            class="rounded-circle me-4"
+            className="rounded-circle me-4"
           />
           <span className="text-center display-6 me-auto">Name...</span>
           <IconChevronDown />
@@ -76,7 +76,7 @@ export default function Home() {
           <img
             src="/profile-placeholder.jpeg"
             width="90px"
-            class="rounded-circle me-4"
+            className="rounded-circle me-4"
           />
           <span className="text-center display-6 me-auto">Name...</span>
           <IconChevronUp />
