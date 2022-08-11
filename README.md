@@ -17,4 +17,5 @@ npm run dev
 และสุดท้ายให้ deploy ใน [CMU Personal Webhosting](https://register-myweb.cmu.ac.th/)
 
 CodeSandBox (https://codesandbox.io/s/lab-06-multiple-users-generator-o9wtr7?file=/pages/index.js)
+
 CMU PW (http://myweb.cmu.ac.th/panyapat_wongdee/261207/lab-06/)
