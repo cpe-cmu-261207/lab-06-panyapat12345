@@ -4,10 +4,18 @@ import {
   IconMailForward,
   IconMapPins,
 } from "@tabler/icons";
+import { useState } from "react";
+import UserCard from "../components/UserCard";
+import axios from "axios";
 
 export default function Home() {
-  const genUsers = async () => {
-    const resp = await axios.get(`https://randomuser.me/api/`);
+  const [input, setInput] = useState(1);
+  const [users, setUsers] = useState([]);
+
+  const genUsers = async (N) => {
+    const resp = await axios.get(`https://randomuser.me/api/?results=${N}`);
+    //for (const user of resp.data.results) console.log(user);
+    setUsers(resp.data.results);
   };
 
   return (
@@ -24,14 +32,29 @@ export default function Home() {
           className="form-control text-center"
           style={{ maxWidth: "100px" }}
           type="number"
+          onChange={(event) => {
+            setInput(event.target.value);
+          }}
+          value={input}
         />
-        <button class="btn btn-dark" onClick={() => genUsers()}>
+        <button
+          class="btn btn-dark"
+          onClick={() => {
+            if (input > 0) genUsers(input);
+            else alert("Invalid number of user");
+          }}
+        >
           Generate
         </button>
       </div>
 
+      {/* UserCard */}
+      {users.map((user) => (
+        <UserCard person={user} key={user.name.last} />
+      ))}
+
       {/* Example of folded UserCard */}
-      <div className="border-bottom">
+      <div className="border-bottom" style={{ display: "none" }}>
         {/* main section */}
         <div className="d-flex align-items-center p-3">
           <img
@@ -47,7 +70,7 @@ export default function Home() {
       </div>
 
       {/* Example of expanded UserCard */}
-      <div className="border-bottom">
+      <div className="border-bottom" style={{ display: "none" }}>
         {/* main section */}
         <div className="d-flex align-items-center p-3">
           <img
@@ -72,7 +95,7 @@ export default function Home() {
 
       {/* made by section */}
       <p className="text-center mt-3 text-muted fst-italic">
-        made by Chayanin Suatap 12345679
+        made by Panyapat Wongdee 640610650
       </p>
     </div>
   );
